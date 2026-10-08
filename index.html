@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AURA STUDIO | 감각적인 컨템포러리 라이프스타일 셀렉트샵</title>
+  <meta name="description" content="미니멀한 실루엣과 품격 있는 소재로 일상의 특별한 순간을 완성하는 프리미엄 쇼핑몰 AURA STUDIO.">
+
+  <!-- Favicon SVG -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%239e6d4c'><circle cx='12' cy='12' r='10'/></svg>">
+
+  <!-- Google Fonts: Cinzel & Playfair Display -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+
+  <!-- Pretendard Font -->
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+
+  <style>
+    /* Theme toggle sun/moon icon transition */
+    [data-theme="dark"] .theme-moon { display: none !important; }
+    [data-theme="dark"] .theme-sun { display: block !important; }
+    :root:not([data-theme="dark"]) .theme-moon { display: block !important; }
+    :root:not([data-theme="dark"]) .theme-sun { display: none !important; }
+
+    /* Smooth anchor offset */
+    html {
+      scroll-padding-top: 80px;
+    }
+
+    /* Additional micro-enhancements */
+    .brand {
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 1. Top Announcement Bar -->
+  <div class="top-bar" id="topBar">
+    <div class="top-bar-content">
+      <span>✨ 신규 회원 가입 시 10% 웰컴 쿠폰 즉시 발급! 코드:</span>
+      <span class="top-bar-code">AURA10</span>
+      <span>(50,000원 이상 구매 시 무료배송)</span>
+    </div>
+    <button class="top-bar-close" id="topBarClose" aria-label="상단 알림 닫기">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+  </div>
+
+  <!-- 2. Sticky Header & Navigation -->
+  <header class="header" id="header">
+    <div class="container header-container">
+      <!-- Brand Logo -->
+      <a href="#" class="brand">
+        <span class="brand-name">AURA STUDIO</span>
+        <span class="brand-tag">MINIMAL ARCHIVE</span>
+      </a>
+
+      <!-- Main Navigation -->
+      <nav class="main-nav" aria-label="메인 메뉴">
+        <a href="#shop" class="nav-item active">컬렉션</a>
+        <a href="#highlights" class="nav-item">하이라이트</a>
+        <a href="#editorial" class="nav-item">에디토리얼</a>
+        <a href="#reviews" class="nav-item">고객 리뷰</a>
+        <a href="#about" class="nav-item">브랜드 스토리</a>
+      </nav>
+
+      <!-- Header Utilities -->
+      <div class="header-utils">
+        <!-- Search Input with Keyboard Shortcut -->
+        <div class="search-box">
+          <input type="text" id="searchInput" class="search-input" placeholder="상품 검색... ( / )" aria-label="상품 검색">
+          <span class="search-btn" aria-hidden="true">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </span>
+        </div>
+
+        <!-- Dark/Light Mode Toggle -->
+        <button class="icon-btn" id="themeToggle" aria-label="테마 전환" title="다크/라이트 모드 전환">
+          <!-- Moon icon (shows in light mode) -->
+          <svg class="theme-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+          <!-- Sun icon (shows in dark mode) -->
+          <svg class="theme-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+        </button>
+
+        <!-- Wishlist Button -->
+        <button class="icon-btn" id="wishlistBtn" aria-label="위시리스트 열기" title="위시리스트">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+          </svg>
+          <span class="badge-count" id="wishlistBadge" style="display: none;">0</span>
+        </button>
+
+        <!-- Cart Button -->
+        <button class="icon-btn" id="cartBtn" aria-label="장바구니 열기" title="장바구니">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <path d="M16 10a4 4 0 0 1-8 0"></path>
+          </svg>
+          <span class="badge-count" id="cartBadge" style="display: none;">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- 3. Hero Carousel Section -->
+  <section class="hero" id="home">
+    <div class="hero-slider">
+      <!-- Slide 1 -->
+      <div class="hero-slide active">
+        <img class="hero-bg-img" src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=1600&q=80" alt="2026 Spring Collection">
+        <div class="hero-overlay"></div>
+        <div class="container" style="position: relative; z-index: 2; height: 100%; display: flex; align-items: center;">
+          <div class="hero-content">
+            <span class="hero-tag">2026 SPRING COLLECTION</span>
+            <h1 class="hero-title">절제된 실루엣과<br>순수한 본질의 미학</h1>
+            <p class="hero-desc">시간이 흘러도 변치 않는 클래식함과 현대적인 모더니즘의 조화. 프리미엄 천연 원사로 완성한 AURA STUDIO의 새로운 아카이브를 만나보세요.</p>
+            <div class="hero-btn-group">
+              <a href="#shop" class="btn-primary">
+                컬렉션 둘러보기
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </a>
+              <a href="#editorial" class="btn-outline-white">룩북 탐색</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 2 -->
+      <div class="hero-slide">
+        <img class="hero-bg-img" src="https://images.unsplash.com/photo-1445205170230-053b83016050?auto=format&fit=crop&w=1600&q=80" alt="Cashmere & Tailoring">
+        <div class="hero-overlay"></div>
+        <div class="container" style="position: relative; z-index: 2; height: 100%; display: flex; align-items: center;">
+          <div class="hero-content">
+            <span class="hero-tag">TAILORED ESSENTIALS</span>
+            <h2 class="hero-title">촉감으로 전하는<br>캐시미어 & 울 컬렉션</h2>
+            <p class="hero-desc">극상의 부드러움을 선사하는 호주산 울 80%와 몽골리안 캐시미어 블렌딩. 숙련된 테일러의 손길로 정교하게 직조된 실루엣.</p>
+            <div class="hero-btn-group">
+              <a href="#shop" class="btn-primary" onclick="setTimeout(() => { document.querySelector('.tab-btn[data-category=\'outer\']')?.click(); }, 100);">아우터 바로보기</a>
+              <a href="#shop" class="btn-outline-white">전체 상품 보기</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 3 -->
+      <div class="hero-slide">
+        <img class="hero-bg-img" src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?auto=format&fit=crop&w=1600&q=80" alt="Contemporary Lifestyle Objects">
+        <div class="hero-overlay"></div>
+        <div class="container" style="position: relative; z-index: 2; height: 100%; display: flex; align-items: center;">
+          <div class="hero-content">
+            <span class="hero-tag">LIFESTYLE OBJECTS</span>
+            <h2 class="hero-title">일상의 공간에<br>품격을 더하는 오브제</h2>
+            <p class="hero-desc">자연의 숨결을 머금은 세라믹, 은은한 센티드 캔들, 그리고 프렌치 린넨 홈웨어까지. 당신의 공간을 특별하게 채워줄 큐레이션.</p>
+            <div class="hero-btn-group">
+              <a href="#shop" class="btn-primary" onclick="setTimeout(() => { document.querySelector('.tab-btn[data-category=\'lifestyle\']')?.click(); }, 100);">라이프 오브제 보기</a>
+              <a href="#reviews" class="btn-outline-white">고객 리뷰 보기</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slider Controls -->
+      <button class="slider-arrow prev" id="sliderPrev" aria-label="이전 슬라이드">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+      <button class="slider-arrow next" id="sliderNext" aria-label="다음 슬라이드">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+      </button>
+
+      <!-- Slider Dots -->
+      <div class="slider-dots">
+        <span class="dot active"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Highlights / Category Banners Section -->
+  <section class="highlights-section" id="highlights">
+    <div class="container">
+      <div class="highlights-grid">
+        <div class="highlight-card" onclick="document.querySelector('.tab-btn[data-category=\'outer\']')?.click(); document.getElementById('shop').scrollIntoView({behavior:'smooth'});">
+          <img src="https://images.unsplash.com/photo-1539533018447-63fcce2678e3?auto=format&fit=crop&w=800&q=80" alt="Outerwear Archive" loading="lazy">
+          <div class="highlight-overlay">
+            <span class="highlight-tag">SIGNATURE ARCHIVE</span>
+            <h3 class="highlight-title">캐시미어 코트 & 아우터</h3>
+          </div>
+        </div>
+
+        <div class="highlight-card" onclick="document.querySelector('.tab-btn[data-category=\'tops\']')?.click(); document.getElementById('shop').scrollIntoView({behavior:'smooth'});">
+          <img src="https://images.unsplash.com/photo-1434389677669-e08b4cac3105?auto=format&fit=crop&w=800&q=80" alt="Tops and Knits" loading="lazy">
+          <div class="highlight-overlay">
+            <span class="highlight-tag">DAILY ESSENTIAL</span>
+            <h3 class="highlight-title">파인 메리노울 니트웨어</h3>
+          </div>
+        </div>
+
+        <div class="highlight-card" onclick="document.querySelector('.tab-btn[data-category=\'bags\']')?.click(); document.getElementById('shop').scrollIntoView({behavior:'smooth'});">
+          <img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=800&q=80" alt="Leather Goods" loading="lazy">
+          <div class="highlight-overlay">
+            <span class="highlight-tag">TIMELESS CRAFT</span>
+            <h3 class="highlight-title">아틀리에 베지터블 레더</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. Main Shop Section (Catalog, Filters, Grid) -->
+  <section class="shop-section" id="shop">
+    <div class="container">
+      <div class="shop-header">
+        <span class="section-label">CURATED COLLECTION</span>
+        <h2 class="section-title">스튜디오 아카이브</h2>
+      </div>
+
+      <!-- Filter & Sort Bar -->
+      <div class="filter-bar">
+        <!-- Category Tabs -->
+        <div class="category-tabs" role="tablist">
+          <button class="tab-btn active" data-category="all" role="tab">전체보기</button>
+          <button class="tab-btn" data-category="outer" role="tab">아우터</button>
+          <button class="tab-btn" data-category="tops" role="tab">상의</button>
+          <button class="tab-btn" data-category="bottoms" role="tab">하의</button>
+          <button class="tab-btn" data-category="bags" role="tab">가방/슈즈</button>
+          <button class="tab-btn" data-category="lifestyle" role="tab">라이프 오브제</button>
+        </div>
+
+        <!-- Sort & Toggles -->
+        <div class="filter-actions">
+          <select class="sort-select" id="sortSelect" aria-label="상품 정렬">
+            <option value="featured">추천순</option>
+            <option value="new">신상품순</option>
+            <option value="sale">할인율순</option>
+            <option value="price-asc">낮은 가격순</option>
+            <option value="price-desc">높은 가격순</option>
+            <option value="reviews">리뷰 많은순</option>
+          </select>
+
+          <label class="filter-badge-toggle">
+            <input type="checkbox" id="filterSaleOnly">
+            <span>할인 상품</span>
+          </label>
+
+          <label class="filter-badge-toggle">
+            <input type="checkbox" id="filterFreeShip">
+            <span>무료배송</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- Catalog Meta & Keyword Chips -->
+      <div class="catalog-meta">
+        <span id="catalogCount">총 0개의 상품</span>
+        <div class="keyword-chips">
+          <span>인기 키워드:</span>
+          <button class="chip" data-keyword="코트">#코트</button>
+          <button class="chip" data-keyword="니트">#니트</button>
+          <button class="chip" data-keyword="슬랙스">#슬랙스</button>
+          <button class="chip" data-keyword="가죽">#가죽</button>
+          <button class="chip" data-keyword="린넨">#린넨</button>
+          <button class="chip" data-keyword="캔들">#캔들</button>
+        </div>
+      </div>
+
+      <!-- Products Grid (Populated dynamically by app.js) -->
+      <div class="product-grid" id="productGrid">
+        <!-- JS renders items here -->
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. Brand Editorial / Lookbook Section -->
+  <section class="editorial-section" id="editorial">
+    <div class="container">
+      <div class="shop-header">
+        <span class="section-label">EDITORIAL STORIES</span>
+        <h2 class="section-title">스튜디오 룩북 & 저널</h2>
+      </div>
+
+      <div class="editorial-grid">
+        <!-- Story 1 -->
+        <article class="editorial-card">
+          <div class="editorial-img-wrap">
+            <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=900&q=80" alt="Silence and Form" loading="lazy">
+          </div>
+          <div class="editorial-body">
+            <span class="editorial-tag">EDITORIAL 01</span>
+            <h3 class="editorial-title">Silence & Form : 비움에서 시작되는 일상의 미학</h3>
+            <p class="editorial-desc">불필요한 디테일을 덜어내고 소재 본연의 감촉과 실루엣에 집중한 2026 아카이브 컬렉션. 은은하고 자연스러운 우아함을 느껴보세요.</p>
+          </div>
+        </article>
+
+        <!-- Story 2 -->
+        <article class="editorial-card">
+          <div class="editorial-img-wrap">
+            <img src="https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=900&q=80" alt="Slow Living" loading="lazy">
+          </div>
+          <div class="editorial-body">
+            <span class="editorial-tag">EDITORIAL 02</span>
+            <h3 class="editorial-title">The Art of Slow Living : 공간과 사람을 잇는 오브제</h3>
+            <p class="editorial-desc">자연의 질감을 닮은 세라믹과 은은한 소이 왁스 향기로 일상에 깊은 쉼을 전하는 홈 라이프스타일 큐레이션 시리즈.</p>
+          </div>
+        </article>
+
+        <!-- Story 3 -->
+        <article class="editorial-card">
+          <div class="editorial-img-wrap">
+            <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=900&q=80" alt="Time-Honored Craft" loading="lazy">
+          </div>
+          <div class="editorial-body">
+            <span class="editorial-tag">EDITORIAL 03</span>
+            <h3 class="editorial-title">Time-Honored Craft : 시간이 빚어내는 고유한 가치</h3>
+            <p class="editorial-desc">숙련된 장인의 섬세한 손길로 완성되어 손때가 묻을수록 더욱 짙고 그윽한 멋을 더해가는 이탈리안 베지터블 레더 컬렉션.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. Customer Reviews Section -->
+  <section class="reviews-section" id="reviews">
+    <div class="container">
+      <div class="shop-header">
+        <span class="section-label">REAL CUSTOMER REVIEWS</span>
+        <h2 class="section-title">고객 생생 후기</h2>
+      </div>
+
+      <div class="reviews-grid">
+        <!-- Review 1 -->
+        <div class="review-card">
+          <div class="review-header">
+            <span class="review-author">김*진 님</span>
+            <span class="review-date">2026.09.28</span>
+          </div>
+          <div class="review-stars">★★★★★</div>
+          <div class="review-product-tag">미니멀 캐시미어 블렌드 싱글 코트</div>
+          <p class="review-content">원단 촉감이 백화점 하이엔드 브랜드 못지않게 정말 부드럽고 가볍습니다. 어깨 라인이 자연스럽게 떨어져서 핏이 너무 예뻐요!</p>
+          <div class="review-photo">
+            <img src="https://images.unsplash.com/photo-1539533018447-63fcce2678e3?auto=format&fit=crop&w=300&q=80" alt="후기 사진 1" loading="lazy">
+          </div>
+        </div>
+
+        <!-- Review 2 -->
+        <div class="review-card">
+          <div class="review-header">
+            <span class="review-author">이*원 님</span>
+            <span class="review-date">2026.09.25</span>
+          </div>
+          <div class="review-stars">★★★★★</div>
+          <div class="review-product-tag">아틀리에 베지터블 레더 토트백</div>
+          <p class="review-content">맥북 16인치도 거뜬히 들어가고 가죽 퀄리티가 환상적입니다. 가죽 고유의 향도 좋고 매일 들고 출근하고 있어요.</p>
+          <div class="review-photo">
+            <img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=300&q=80" alt="후기 사진 2" loading="lazy">
+          </div>
+        </div>
+
+        <!-- Review 3 -->
+        <div class="review-card">
+          <div class="review-header">
+            <span class="review-author">박*서 님</span>
+            <span class="review-date">2026.09.22</span>
+          </div>
+          <div class="review-stars">★★★★★</div>
+          <div class="review-product-tag">와이드 핏 투턱 울 슬랙스</div>
+          <p class="review-content">찰랑거리는 원단 드레이프가 완벽합니다. 주름도 잘 안 생기고 핏이 다리를 훨씬 길어보이게 만들어주네요. 다른 색상도 재구매 예정!</p>
+          <div class="review-photo">
+            <img src="https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?auto=format&fit=crop&w=300&q=80" alt="후기 사진 3" loading="lazy">
+          </div>
+        </div>
+
+        <!-- Review 4 -->
+        <div class="review-card">
+          <div class="review-header">
+            <span class="review-author">최*우 님</span>
+            <span class="review-date">2026.09.18</span>
+          </div>
+          <div class="review-stars">★★★★★</div>
+          <div class="review-product-tag">포레스트 우디 센티드 캔들</div>
+          <p class="review-content">퇴근하고 불 켜두면 방 안 가득 숲속에 온 듯한 차분한 우디향이 퍼져서 힐링됩니다. 패키지도 모던하고 선물용으로도 최고예요.</p>
+          <div class="review-photo">
+            <img src="https://images.unsplash.com/photo-1506880018603-83d5b814b5a6?auto=format&fit=crop&w=300&q=80" alt="후기 사진 4" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. Newsletter Section -->
+  <section class="newsletter-section">
+    <div class="container">
+      <div class="newsletter-content">
+        <h2 class="newsletter-title">AURA PRIVILEGE</h2>
+        <p class="newsletter-desc">아우라 스튜디오의 뉴스레터를 구독하시고 신규 컬렉션 발매 소식과 프라이빗 10% 시크릿 할인 혜택을 가장 먼저 받아보세요.</p>
+        <form class="newsletter-form" id="newsletterForm">
+          <input type="email" class="newsletter-input" id="newsletterEmail" placeholder="이메일 주소를 입력해 주세요" required>
+          <button type="submit" class="newsletter-btn">구독하기</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. Footer Section -->
+  <footer class="footer" id="about">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-col">
+          <h3 class="footer-brand-title">AURA STUDIO</h3>
+          <p class="footer-desc">
+            AURA STUDIO는 불필요한 장식을 덜어내고 소재의 진정성과 본질적 실루엣에 집중하는 컨템포러리 라이프스타일 셀렉트샵입니다. 당신의 일상에 잔잔한 품격을 더합니다.
+          </p>
+          <p style="font-size: 12px; color: var(--text-muted);">
+            사업자등록번호: 120-88-12345 | 통신판매업신고: 제2026-서울강남-0142호<br>
+            대표자: 안단테 | 서울특별시 강남구 테헤란로 152 스튜디오 타워 12층
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>COLLECTIONS</h4>
+          <ul class="footer-links">
+            <li><a href="#shop" onclick="document.querySelector('.tab-btn[data-category=\'outer\']')?.click();">아우터 (Outer)</a></li>
+            <li><a href="#shop" onclick="document.querySelector('.tab-btn[data-category=\'tops\']')?.click();">상의 (Tops)</a></li>
+            <li><a href="#shop" onclick="document.querySelector('.tab-btn[data-category=\'bottoms\']')?.click();">하의 (Bottoms)</a></li>
+            <li><a href="#shop" onclick="document.querySelector('.tab-btn[data-category=\'bags\']')?.click();">가방 & 슈즈 (Accessories)</a></li>
+            <li><a href="#shop" onclick="document.querySelector('.tab-btn[data-category=\'lifestyle\']')?.click();">라이프 오브제 (Lifestyle)</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>ABOUT & HELP</h4>
+          <ul class="footer-links">
+            <li><a href="#editorial">룩북 스토리</a></li>
+            <li><a href="#reviews">고객 후기</a></li>
+            <li><a href="#about">배송 및 반품 안내</a></li>
+            <li><a href="#about">멤버십 혜택</a></li>
+            <li><a href="#about">1:1 고객 문의</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>CUSTOMER SERVICE</h4>
+          <div class="cs-number">1588-4290</div>
+          <div class="cs-hours">
+            월 ~ 금요일: 10:00 ~ 18:00 (점심시간 12:30 ~ 13:30)<br>
+            주말 및 공휴일 휴무<br>
+            이메일: concierge@aurastudio.com
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2026 AURA STUDIO Inc. All rights reserved.</div>
+        <div class="footer-terms">
+          <a href="#">이용약관</a>
+          <a href="#"><strong>개인정보처리방침</strong></a>
+          <a href="#">이용안내</a>
+          <a href="#">사업자정보확인</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===================================================================== -->
+  <!-- 10. Modals & Drawers -->
+  <!-- ===================================================================== -->
+
+  <!-- Modal Backdrop -->
+  <div class="modal-backdrop" id="modalBackdrop"></div>
+
+  <!-- Cart Drawer -->
+  <aside class="cart-drawer" id="cartDrawer" aria-label="장바구니">
+    <div class="drawer-header">
+      <h3 class="drawer-title">장바구니</h3>
+      <button class="drawer-close" id="cartCloseBtn" aria-label="장바구니 닫기">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Free Shipping Progress -->
+    <div class="shipping-bar-box">
+      <div class="shipping-msg" id="shippingMessage">
+        <strong>50,000원</strong> 이상 구매 시 무료배송
+      </div>
+      <div class="progress-track">
+        <div class="progress-fill" id="shippingProgressFill" style="width: 0%;"></div>
+      </div>
+    </div>
+
+    <!-- Cart Item List -->
+    <div class="cart-items" id="cartItemsList">
+      <!-- Populated dynamically by app.js -->
+    </div>
+
+    <!-- Cart Footer & Checkout Action -->
+    <div class="cart-footer">
+      <div class="coupon-box">
+        <input type="text" class="coupon-input" id="couponInput" placeholder="쿠폰 코드 입력 (예: AURA10)">
+        <button class="coupon-btn" id="applyCouponBtn" type="button">쿠폰 적용</button>
+      </div>
+      <div class="coupon-applied-msg" id="couponAppliedMsg"></div>
+
+      <div class="price-summary">
+        <div class="summary-row">
+          <span>상품 주문금액</span>
+          <span id="summarySubtotal">0원</span>
+        </div>
+        <div class="summary-row">
+          <span>배송비</span>
+          <span id="summaryShipping">0원</span>
+        </div>
+        <div class="summary-row">
+          <span>쿠폰 할인</span>
+          <span id="summaryDiscount">0원</span>
+        </div>
+        <div class="summary-row total">
+          <span>총 결제 금액</span>
+          <span id="summaryTotal">0원</span>
+        </div>
+      </div>
+
+      <button class="btn-checkout" id="startCheckoutBtn" type="button">
+        <span>주문서 작성하기</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </svg>
+      </button>
+    </div>
+  </aside>
+
+  <!-- Quick View Modal -->
+  <div class="quickview-modal" id="quickViewModal" role="dialog" aria-modal="true" aria-label="상품 상세 보기">
+    <button class="modal-close-btn" id="qvCloseBtn" aria-label="모달 닫기">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+    <div class="quickview-body">
+      <!-- Gallery Column -->
+      <div class="qv-gallery">
+        <div class="qv-main-img">
+          <img id="qvMainImg" src="" alt="상품 대표 이미지">
+        </div>
+        <div class="qv-thumbs" id="qvThumbsContainer">
+          <!-- Populated by app.js -->
+        </div>
+      </div>
+
+      <!-- Details Column -->
+      <div class="qv-details">
+        <span class="qv-category" id="qvCategory">카테고리</span>
+        <h2 class="qv-title" id="qvTitle">상품명</h2>
+        <div class="qv-eng-title" id="qvEngTitle">Product English Name</div>
+
+        <div class="qv-price-row">
+          <span class="qv-price" id="qvPrice">0원</span>
+          <span class="price-original" id="qvOriginalPrice"></span>
+          <span class="price-discount" id="qvDiscount"></span>
+        </div>
+
+        <p class="qv-summary" id="qvSummary">상품 설명</p>
+
+        <!-- Color Options -->
+        <div class="option-group">
+          <span class="option-label">컬러 선택 (Color)</span>
+          <div class="color-chips" id="qvColorsContainer"></div>
+        </div>
+
+        <!-- Size Options -->
+        <div class="option-group">
+          <span class="option-label">사이즈 선택 (Size)</span>
+          <div class="size-chips" id="qvSizesContainer"></div>
+        </div>
+
+        <!-- Quantity Control -->
+        <div class="option-group">
+          <span class="option-label">수량 (Quantity)</span>
+          <div class="qty-control" style="width: 105px;">
+            <button class="qty-btn" type="button" onclick="window.app.changeQvQty(-1)">-</button>
+            <span class="qty-val" id="qvQtyVal">1</span>
+            <button class="qty-btn" type="button" onclick="window.app.changeQvQty(1)">+</button>
+          </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="qv-actions">
+          <button class="btn-primary" id="qvAddCartBtn" type="button">장바구니 담기</button>
+          <button class="btn-buy-now" id="qvBuyNowBtn" type="button">바로 구매하기</button>
+        </div>
+
+        <!-- Bullet Highlights -->
+        <ul class="qv-bullets" id="qvBulletsContainer"></ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Wishlist Modal -->
+  <div class="wishlist-modal" id="wishlistModal" role="dialog" aria-modal="true" aria-label="위시리스트">
+    <button class="modal-close-btn" id="wishlistCloseBtn" aria-label="모달 닫기">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+    <h3 class="checkout-title">보관한 위시리스트</h3>
+    <div class="wishlist-items" id="wishlistItemsContainer">
+      <!-- Populated by app.js -->
+    </div>
+  </div>
+
+  <!-- Checkout Modal -->
+  <div class="checkout-modal" id="checkoutModal" role="dialog" aria-modal="true" aria-label="주문 결제">
+    <button class="modal-close-btn" id="checkoutCloseBtn" aria-label="모달 닫기">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+
+    <!-- Order Input Form -->
+    <div id="checkoutFormSection">
+      <h3 class="checkout-title">주문 / 안전 결제</h3>
+      <form id="checkoutForm">
+        <div class="form-group">
+          <label class="form-label">주문자 성함</label>
+          <input type="text" class="form-input" required placeholder="홍길동" value="홍길동">
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">연락처</label>
+            <input type="tel" class="form-input" required placeholder="010-1234-5678" value="010-9876-5432">
+          </div>
+          <div class="form-group">
+            <label class="form-label">이메일</label>
+            <input type="email" class="form-input" required placeholder="user@example.com" value="aura.member@example.com">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">배송지 주소</label>
+          <input type="text" class="form-input" required placeholder="기본 주소 입력" value="서울특별시 강남구 테헤란로 152" style="margin-bottom: 8px;">
+          <input type="text" class="form-input" placeholder="상세 주소 (동, 호수)" value="스튜디오 타워 12층">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">배송 요청 사항</label>
+          <input type="text" class="form-input" placeholder="부재 시 문 앞에 놓아주세요" value="부재 시 경비실이나 문 앞에 보관해 주세요.">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">결제 수단</label>
+          <div class="payment-methods">
+            <div class="pay-card active">신용/체크카드</div>
+            <div class="pay-card">카카오페이</div>
+            <div class="pay-card">네이버페이</div>
+            <div class="pay-card">토스페이</div>
+          </div>
+        </div>
+
+        <!-- Checkout Summary -->
+        <div class="price-summary" style="background-color: var(--bg-secondary); padding: 18px; border-radius: var(--radius-sm); margin-bottom: 20px;">
+          <div class="summary-row">
+            <span>주문 금액</span>
+            <span id="checkoutSubtotal">0원</span>
+          </div>
+          <div class="summary-row">
+            <span>배송비</span>
+            <span id="checkoutShipping">0원</span>
+          </div>
+          <div class="summary-row">
+            <span>할인 혜택</span>
+            <span id="checkoutDiscount">0원</span>
+          </div>
+          <div class="summary-row total">
+            <span>최종 결제 금액</span>
+            <span id="checkoutTotal">0원</span>
+          </div>
+        </div>
+
+        <button type="submit" class="btn-checkout" id="paySubmitBtn">결제 완료하기</button>
+      </form>
+    </div>
+
+    <!-- Order Success Screen -->
+    <div id="checkoutSuccessSection" style="display: none;">
+      <div class="order-success-box">
+        <div class="success-check-icon">
+          <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+        </div>
+        <h2 style="font-size: 22px; font-weight: 700; margin-bottom: 8px;">주문이 정상적으로 접수되었습니다!</h2>
+        <p style="font-size: 14px; color: var(--text-sub); margin-bottom: 14px;">
+          주문 번호: <strong id="orderNumberDisplay" style="color: var(--accent-warm);">AUR-20261008-0000</strong>
+        </p>
+        <p style="font-size: 13.5px; color: var(--text-sub); line-height: 1.6; margin-bottom: 24px;">
+          주문 내역 및 배송 조회 정보가 입력하신 이메일과 알림톡으로 발송되었습니다.<br>
+          AURA STUDIO와 함께 특별한 일상을 경험해보세요.
+        </p>
+        <button class="btn-primary" id="continueShoppingBtn" style="margin: 0 auto;">쇼핑 계속하기</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll to Top Button -->
+  <button class="btn-scroll-top" id="scrollTopBtn" aria-label="맨 위로 스크롤" title="맨 위로 이동">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+      <polyline points="18 15 12 9 6 15"></polyline>
+    </svg>
+  </button>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toastContainer" aria-live="polite"></div>
+
+  <!-- Scripts -->
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,8 @@
+# Backups
+*-backup.html
+*.bak
+
+# OS junk
+Thumbs.db
+Desktop.ini
+.DS_Store
